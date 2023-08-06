@@ -5,3 +5,7 @@ services:
       - 8000:8000
     volumes:
       - ./app:/app
+    environment:
+      - DJANGO_SUPERUSER_USERNAME=admin
+      - DJANGO_SUPERUSER_EMAIL=admin@kmail.com
+      - DJANGO_SUPERUSER_PASSWORD=12345678

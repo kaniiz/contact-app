@@ -1,0 +1,45 @@
+html, body {
+    width: 100%;
+    font-family:'Courier New', Courier, monospace, sans-serif;
+}
+
+.container {
+    width: 1080px;
+    margin: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+nav {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+nav > a {
+    margin: 0px 10px 0 10px;
+    text-transform: capitalize;
+}
+
+.photo-wrapper {
+    margin-top: 2rem;
+}
+
+.photo {
+    width: 90px;
+    height: 120px;
+}
+
+.research-body > p {
+    text-indent: 50px;
+}
+
+.contact-table {
+    width: 80%;
+}
+
+.add-contact-form {
+    margin-top: 2rem;
+}

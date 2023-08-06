@@ -1,9 +1,41 @@
-{% load static %}
-<html>
-    <head>
-        <link rel="stylesheet" href="{% static 'contacts/style.css' %}">
-    </head>
-    <body>
-        <h1>Hello World</h1>
-    </body>
-</html>
+{% extends "home/base.html" %}
+
+{% block content %}
+    <div class="contact-wrapper">
+        <div class="contact-header">
+            <h1>My contacts</h1>
+        </div>
+        <div class="contact-body">
+            <table class="contact-table">
+                <thead>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>MOBILE</td>
+                    <td>E-MAIL</td>
+                    <td>ADDRESS</td>
+                    <td>ACTIONS</td>
+                </thead>
+                
+                    {% for row in contacts %}
+                    <tbody>
+                        <td><input type="text" disabled value="{{row.id}}"></td>
+                        <td><input type="text" disabled value="{{row.name}}"></td>
+                        <td><input id="email-input-{{row.id}}" type="text" disabled value="{{row.email}}"></td>
+                        <td><input id="mobile-input-{{row.id}}" type="text" disabled value="{{row.mobile}}"></td>
+                        <td><input id="addr-input-{{row.id}}" type="text" disabled value="{{row.address}}"></td>
+                        <td><button id="update-btn-{{row.id}}" onclick="handleUpdate({{row.id}})">Update</button><button id="delete-btn-{{row.id}}" onclick="handleDelete({{row.id}})">Delete</button></td>
+                     </tbody>
+                    {% endfor %}                    
+               
+            </table>
+            <form class="add-contact-form" action="/contacts" method="POST">
+            {% csrf_token %}
+            {{ form }}
+                <button type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+    <nav>
+        <a href="/">Home</a>
+    </nav>
+{% endblock %}

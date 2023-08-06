@@ -5,3 +5,6 @@ def home(request):
 
 def about(request):
     return render(request, 'home/about.html', {})
+
+def research(request):
+    return render(request, 'home/research.html', {})
