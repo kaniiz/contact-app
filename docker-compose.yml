@@ -1,11 +1,29 @@
 services:
+  nginx:
+    image: nginx:1.25.1
+    volumes:
+      - ./config/nginx:/etc/nginx/conf.d
+      - appvol:/web
+    ports:
+      - 9000:80
+    links:
+      - app
+
   app:
     build: .
     ports:
       - 8000:8000
     volumes:
       - ./app:/app
+      - appvol:/web
     environment:
       - DJANGO_SUPERUSER_USERNAME=admin
       - DJANGO_SUPERUSER_EMAIL=admin@kmail.com
       - DJANGO_SUPERUSER_PASSWORD=12345678
+      - STATIC_ROOT=/web
+      - DB_DIR=/db
+      - DJANGO_DEBUG=True
+      - DJANGO_SECRET_KEY=django-insecure-7+4c2q*p2)_34zkm&yoc&=zhdio^n7jcs&ioydwa@#m!f0=&rm
+
+volumes:
+  appvol:
